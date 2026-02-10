@@ -41,7 +41,7 @@ function App() {
       const currentKeys = activeTab === 'fourSquare' ? keys : [vigenereKey];
       currentKeys.forEach(k => formData.append('keys', k));
 
-      const res = await axios.post(process.env.VITE_API_BASE, formData);
+      const res = await axios.post(import.meta.env.VITE_API_BASE, formData);
       setResult(res.data.result);
     } catch (err) {
       const msg = err.response?.data?.error || err.message;
