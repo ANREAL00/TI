@@ -28,7 +28,7 @@ body {
 
 .header h1 {
   font-size: 3rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
@@ -132,11 +132,74 @@ input[type="text"]:focus {
   margin-top: 2rem;
 }
 
+.vigenere-recta-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 81%;
+  height: 81%;
+  overflow: auto;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+
+.recta-table {
+  border-collapse: collapse;
+  font-family: monospace;
+  font-size: 0.8rem;
+  width: max-content;
+}
+
+.recta-table th,
+.recta-table td {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.recta-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+  color: var(--secondary);
+}
+
+.recta-table tbody th {
+  position: sticky;
+  left: 0;
+  background: var(--bg);
+  z-index: 9;
+  color: var(--secondary);
+}
+
+.recta-table th.corner {
+  z-index: 11;
+  background: var(--bg);
+}
+
+.recta-table tr.highlight-row td {
+  background: rgba(147, 51, 234, 0.1);
+}
+
+.recta-table td.highlight-col {
+  background: rgba(147, 51, 234, 0.1);
+}
+
+.recta-table td.highlight-active {
+  background: var(--secondary) !important;
+  color: white !important;
+  font-weight: bold;
+}
+
 .foursquare-grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 280px);
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  justify-items: center;
   margin-top: 2rem;
 }
 
@@ -206,18 +269,33 @@ input[type="text"]:focus {
   transform: scale(1.1);
 }
 
-.vigenere-table {
-  width: 100%;
+.vigenere-stats-table {
   border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
 }
 
-.vigenere-table th,
-.vigenere-table td {
-  padding: 12px;
+.vigenere-stats-table th,
+.vigenere-stats-table td {
+  padding: 0.75rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 50px;
 }
 
-.vigenere-table tr.active {
-  background: rgba(99, 102, 241, 0.1);
+.vigenere-stats-table th.sticky-col {
+  position: sticky;
+  left: 0;
+  background: var(--bg);
+  z-index: 5;
+  color: var(--secondary);
+  text-align: left;
+  min-width: 100px;
+  border-right: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.vigenere-stats-table td.active {
+  background: rgba(147, 51, 234, 0.2);
+  border-color: var(--secondary);
+  color: white;
 }

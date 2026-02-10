@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="header">
-        <h1>Лаб 1</h1>
+        <h1>Лабораторная работа 1</h1>
         <p>Редько Антон Михайлович</p>
       </div>
 

@@ -26,7 +26,6 @@ app.post('/api/encrypt', upload.single('file'), (req, res) => {
         let result = '';
         if (algorithm === 'fourSquare') {
             const keyArray = Array.isArray(keys) ? keys : [keys || ''];
-            // Ensure 4 keys
             const paddedKeys = (keyArray.concat(['', '', '', ''])).slice(0, 4);
             result = type === 'encrypt'
                 ? encryptFourSquare(input, paddedKeys)

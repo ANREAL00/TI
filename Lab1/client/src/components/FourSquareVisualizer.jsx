@@ -25,7 +25,6 @@ const FourSquareVisualizer = ({ keys, text, result }) => {
     const matrices = keys.map(k => createMatrix(k || ''));
     const cleanText = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
 
-    // Split text into pairs
     const pairs = [];
     for (let i = 0; i < cleanText.length; i += 2) {
         pairs.push(cleanText.slice(i, i + 2).padEnd(2, 'X'));
