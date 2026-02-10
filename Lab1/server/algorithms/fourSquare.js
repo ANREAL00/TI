@@ -37,12 +37,25 @@ const encryptFourSquare = (text, keys) => {
     const matrices = (keys || []).map(k => createMatrix(k));
     let cleanText = String(text || '').toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
     if (!cleanText) return "";
-    if (cleanText.length % 2 !== 0) cleanText += 'X';
+
+    let paddedText = '';
+    for (let i = 0; i < cleanText.length; i++) {
+        paddedText += cleanText[i];
+        if (i < cleanText.length - 1 && cleanText[i] === cleanText[i + 1] && cleanText[i] !== 'X') {
+            paddedText += 'X';
+        } else if (i < cleanText.length - 1 && cleanText[i] === 'X' && cleanText[i + 1] === 'X') {
+            paddedText += 'Y';
+        }
+    }
+
+    if (paddedText.length % 2 !== 0) {
+        paddedText += 'X';
+    }
 
     let result = '';
-    for (let i = 0; i < cleanText.length; i += 2) {
-        const char1 = cleanText[i];
-        const char2 = cleanText[i + 1] || 'X';
+    for (let i = 0; i < paddedText.length; i += 2) {
+        const char1 = paddedText[i];
+        const char2 = paddedText[i + 1];
 
         const pos1 = findPosition(matrices[0], char1);
         const pos2 = findPosition(matrices[3], char2);

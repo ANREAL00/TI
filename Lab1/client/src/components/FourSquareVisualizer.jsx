@@ -25,9 +25,23 @@ const FourSquareVisualizer = ({ keys, text, result }) => {
     const matrices = keys.map(k => createMatrix(k || ''));
     const cleanText = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
 
+    let paddedText = '';
+    for (let i = 0; i < cleanText.length; i++) {
+        paddedText += cleanText[i];
+        if (i < cleanText.length - 1 && cleanText[i] === cleanText[i + 1] && cleanText[i] !== 'X') {
+            paddedText += 'X';
+        } else if (i < cleanText.length - 1 && cleanText[i] === 'X' && cleanText[i + 1] === 'X') {
+            paddedText += 'Y';
+        }
+    }
+
+    if (paddedText.length % 2 !== 0) {
+        paddedText += 'X';
+    }
+
     const pairs = [];
-    for (let i = 0; i < cleanText.length; i += 2) {
-        pairs.push(cleanText.slice(i, i + 2).padEnd(2, 'X'));
+    for (let i = 0; i < paddedText.length; i += 2) {
+        pairs.push(paddedText.slice(i, i + 2));
     }
 
     const currentPair = pairs[step] || ['?', '?'];
