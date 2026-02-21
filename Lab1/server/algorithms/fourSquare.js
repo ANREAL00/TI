@@ -44,7 +44,7 @@ const encryptFourSquare = (text, keys) => {
         if (i < cleanText.length - 1 && cleanText[i] === cleanText[i + 1] && cleanText[i] !== 'X') {
             paddedText += 'X';
         } else if (i < cleanText.length - 1 && cleanText[i] === 'X' && cleanText[i + 1] === 'X') {
-            paddedText += 'Y';
+            paddedText += 'Q';
         }
     }
 
