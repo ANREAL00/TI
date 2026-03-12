@@ -1,0 +1,23 @@
+# Node / JS
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist
+build
+.vite
+
+# Logs
+logs
+*.log
+
+# IDE / OS
+.vscode
+.idea
+*.iml
+Thumbs.db
+.DS_Store
+
