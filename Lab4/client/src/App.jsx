@@ -94,13 +94,13 @@ function charToMi(ch) {
   const cp = ch.codePointAt(0);
   if ((cp >= 0x41 && cp <= 0x5a) || (cp >= 0x61 && cp <= 0x7a)) {
     const upLat = cp >= 0x61 ? cp - 0x20 : cp;
-    return BigInt(upLat - 0x40);
+    return BigInt(upLat);
   }
   return BigInt(cp);
 }
 
 function hashMessage32(text, n) {
-  if (n <= 100n) throw new Error('Модуль n = p·q должен быть > 100.');
+  if (n <= 1n) throw new Error('Модуль n = p·q должен быть > 1.');
   if (text.length === 0) {
     return H0;
   }
@@ -327,7 +327,7 @@ export default function App() {
             lineHeight: 1.5,
           }}
         >
-          Буквы в тексте: кириллица А…Я → 1…33; латиница A…Z (регистр не важен) → 1…26; прочие символы — их код Unicode.
+          Буквы в тексте: кириллица А…Я → 1…33; латиница A…Z (регистр не важен) → код ASCII заглавной буквы (65…90); прочие символы — их код Unicode.
         </p>
       </div>
 
